@@ -12,7 +12,7 @@ services:
     links:
       - db
     volumes:
-      - /d/Docker/sonarqube/extension:/opt/sonarqube/extensions/plugins
+      - $(pwd)/extension:/opt/sonarqube/extensions/plugins
       - sonarqube_conf:/opt/sonarqube/conf
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
