@@ -3,6 +3,7 @@ version: "3.0"
 services:
   sonarqube:
     image: 'sonarqube:latest'
+    restart:always
     ports:
       - '9001:9000'
     networks:
@@ -23,12 +24,14 @@ services:
       #- sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
 
   db:
-    image: postgres:latest
+    image: 'postgres:latest'
+    restart:always
     networks:
       - sonarnet
     environment:
-      - POSTGRES_USER= sonar
-      - POSTGRES_PASSWORD= sonar
+       POSTGRES_DB: 'sonar'
+       POSTGRES_USER: 'sonar'
+       POSTGRES_PASSWORD: 'sonar'
     volumes:
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
